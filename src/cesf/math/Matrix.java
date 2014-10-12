@@ -3,12 +3,24 @@ package cesf.math;
 // classe immutable per a la representació i manipulació de matrius
 // de nombres reals. Aporta les funcions bàsiques de càlcul sobre
 // matrius M x N.
+/**
+ * Class to represent and manipulate matrix
+ * The function of this class is representing and manipulated matrix made of real numbers 
+ * The class have calculation of basic functions in MxN matrix
+ * @author alexandre
+ *
+ */
 final public class Matrix {
     private final int M;             // núm. files
     private final int N;             // núm. columnes
     private final double[][] data;   // matriu MxN de dades
 
     // crea matriu M x N amb zeros
+    /**
+     * 
+     * @param M
+     * @param N
+     */
     public Matrix(int M, int N) {
         this.M = M;
         this.N = N;
@@ -16,6 +28,10 @@ final public class Matrix {
     }
 
     // crea matriu a partir d'una matriu 2d d'entrada
+    /**
+     * 
+     * @param data
+     */
     public Matrix(double[][] data) {
         M = data.length;
         N = data[0].length;
@@ -26,11 +42,21 @@ final public class Matrix {
     }
 
     // constructor de còpia
+    /**
+     * 
+     * @param A
+     */
     private Matrix(Matrix A) {
     	this(A.data); 
     }
 
     // crea i retorna una matriu MxN aleatòria (valors entre 0 i 1)
+    /**
+     * 
+     * @param M
+     * @param N
+     * @return
+     */
     public static Matrix random(int M, int N) {
         Matrix A = new Matrix(M, N);
         for (int i = 0; i < M; i++)
