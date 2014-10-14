@@ -17,7 +17,7 @@ final public class Matrix {
 
     // crea matriu M x N amb zeros
     /**
-     * 
+     * Creates a matix MxN
      * @param M
      * @param N
      */
