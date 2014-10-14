@@ -11,15 +11,25 @@ package cesf.math;
  *
  */
 final public class Matrix {
-    private final int M;             // núm. files
+	/**
+	 * 
+	 */
+    private final int M; 			 // núm. files
+    /**
+     * 
+     */
     private final int N;             // núm. columnes
+    /**
+     * 
+     */
     private final double[][] data;   // matriu MxN de dades
 
     // crea matriu M x N amb zeros
     /**
      * Creates a matix MxN
-     * @param M
-     * @param N
+     * For the matrix MxN made a matrix full of zeros
+     * @param M is the parameter of the lines
+     * @param N is the parameter od the columns
      */
     public Matrix(int M, int N) {
         this.M = M;
@@ -29,8 +39,9 @@ final public class Matrix {
 
     // crea matriu a partir d'una matriu 2d d'entrada
     /**
-     * 
-     * @param data
+     * made a matix from one given
+     * Makes a new matrix from  the one given
+     * @param data is the matrix given
      */
     public Matrix(double[][] data) {
         M = data.length;
@@ -43,8 +54,9 @@ final public class Matrix {
 
     // constructor de còpia
     /**
-     * 
-     * @param A
+     * Constructor of the copy
+     * Is the construcotr of a matrix if you use a matrix
+     * @param A 
      */
     private Matrix(Matrix A) {
     	this(A.data); 
@@ -52,10 +64,11 @@ final public class Matrix {
 
     // crea i retorna una matriu MxN aleatòria (valors entre 0 i 1)
     /**
-     * 
-     * @param M
-     * @param N
-     * @return
+     * Creates and return a random matrix
+     * Creates a random matrix MxN with values between 0 and 1
+     * @param M parameter of the rows
+     * @param N parameter of the columms
+     * @return return the random matrix
      */
     public static Matrix random(int M, int N) {
         Matrix A = new Matrix(M, N);
@@ -66,6 +79,12 @@ final public class Matrix {
     }
 
     // crea i retorna una matriu NxN identitat (uns a la diagonal)
+    /**
+     * Creates and retrns a matrix NxN identity
+     * <p>Creates a matrix NxN identity that means that have a diagonal 1</p>
+     * @param N is the number of columns and 
+     * @return
+     */
     public static Matrix identity(int N) {
         Matrix I = new Matrix(N, N);
         for (int i = 0; i < N; i++)
@@ -74,6 +93,11 @@ final public class Matrix {
     }
 
     // intercanviar files i i j
+    /**
+     * Changes between rows i and j
+     * @param i
+     * @param j
+     */
     public void swapRows(int i, int j) {
         double[] temp = data[i];
         data[i] = data[j];
