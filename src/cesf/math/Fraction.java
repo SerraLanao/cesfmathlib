@@ -1,17 +1,31 @@
 package cesf.math;
 
 // classe immutable per a representar fraccions enteres
+/**
+ * 
+ * @author alexandre
+ * @version 1.0
+ *
+ */
 public class Fraction {
 
 	private final int num;
 	private final int den;
 	
 	// constructor per defecte
+	/**
+	 * Default constructor
+	 */
 	public Fraction() { 
 		num=0; 
 		den=1;
 	}
 	// constructor amb paràmetres 
+	/**
+	 * Constructor with parameters
+	 * @param num constructor of the denominator
+	 * @param den constructor of the numerator
+	 */
 	public Fraction(int num, int den) { 
 		if (den == 0) 
 			throw new IllegalArgumentException("Denominator can not be zero!"); 
@@ -20,10 +34,18 @@ public class Fraction {
 	}
 
 	// getters
+	/**
+	 * The getters
+	 * @return the getters
+	 */
 	public int getNum() { return this.num; }
 	public int getDen() { return this.den; }
 	
 	// retorna el valor numèric de la fracció
+	/**
+	 * Returns the numeric number of the fraccion
+	 * @return a double 
+	 */
 	public double valueOf() {
 		double x = (double)(this.num) / this.den; 
 		return x;

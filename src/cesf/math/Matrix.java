@@ -8,21 +8,22 @@ package cesf.math;
  * The function of this class is representing and manipulated matrix made of real numbers 
  * The class have calculation of basic functions in MxN matrix
  * @author alexandre
+ * @version 1.0
  *
  */
 final public class Matrix {
 	/**
-	 * 
+	 * number of rows
 	 */
-    private final int M; 			 // núm. files
+    private final int M; 			
     /**
-     * 
+     * number of columns
      */
-    private final int N;             // núm. columnes
+    private final int N;             
     /**
-     * 
+     * matrix MxN of data
      */
-    private final double[][] data;   // matriu MxN de dades
+    private final double[][] data;   
 
     // crea matriu M x N amb zeros
     /**
@@ -55,8 +56,8 @@ final public class Matrix {
     // constructor de còpia
     /**
      * Constructor of the copy
-     * Is the construcotr of a matrix if you use a matrix
-     * @param A 
+     * Is the constructor of a matrix if you use a matrix
+     * @param A is the matrix parameter
      */
     private Matrix(Matrix A) {
     	this(A.data); 
@@ -67,7 +68,7 @@ final public class Matrix {
      * Creates and return a random matrix
      * Creates a random matrix MxN with values between 0 and 1
      * @param M parameter of the rows
-     * @param N parameter of the columms
+     * @param N parameter of the columns
      * @return return the random matrix
      */
     public static Matrix random(int M, int N) {
@@ -83,7 +84,7 @@ final public class Matrix {
      * Creates and retrns a matrix NxN identity
      * <p>Creates a matrix NxN identity that means that have a diagonal 1</p>
      * @param N is the number of columns and 
-     * @return
+     * @return the identity matrix
      */
     public static Matrix identity(int N) {
         Matrix I = new Matrix(N, N);
@@ -95,8 +96,8 @@ final public class Matrix {
     // intercanviar files i i j
     /**
      * Changes between rows i and j
-     * @param i
-     * @param j
+     * @param i one of the parameters
+     * @param j the other parameter
      */
     public void swapRows(int i, int j) {
         double[] temp = data[i];
@@ -105,6 +106,11 @@ final public class Matrix {
     }
 
     // intercanviar columnes i i j
+    /**
+     *  Switch between the column <code>i</code> and the <code>j</code>
+     * @param i one of the parameters
+     * @param j the other parameter
+     */
     public void swapColumns(int i, int j) {
     	for (int r = 0; r < M; r++) {
     		double temp = data[r][i];
@@ -114,6 +120,10 @@ final public class Matrix {
     }
 
     // crea i retorna la matriu transposada de l'actual
+    /**
+     * creates and returns the transposed matrix 
+     * @return the transposed matrix
+     */
     public Matrix transpose() {
         Matrix A = new Matrix(N, M);
         for (int i = 0; i < M; i++)
@@ -123,6 +133,13 @@ final public class Matrix {
     }
 
     // retorna C = A + B
+    /**
+     * C=A+B
+     * matrix C equals matrix A plus matrix B
+     * @param B is a parameter that represents the other matrix
+     * @return the result of the operation
+     * @throw RuntimeException if the matrix is not of the right dimensions
+     */
     public Matrix add(Matrix B) {
         Matrix A = this;
         if (B.M != A.M || B.N != A.N)
@@ -135,6 +152,13 @@ final public class Matrix {
     }
 
     // retorna C = A - B
+    /**
+     * C=A-B
+     * matrix C equals matrix A minus matrix B
+     * @param B is a parameter that represents the other matrix
+     * @return the result of the operation
+     * @throw RuntimeException if the matrix is not of the right dimensions
+     */
     public Matrix substract(Matrix B) {
         Matrix A = this;
         if (B.M != A.M || B.N != A.N) 
@@ -147,6 +171,13 @@ final public class Matrix {
     }
 
     // compara dos matrius a partir dels valors
+    /**
+     * Compare two matrix
+     * Compare two matrix to see if they are equal or not
+     * @param B the other matrix to compare
+     * @return a boolean saying if they are equals matrix or not
+     * @throw RuntimeException if the matrix is not of the right dimensions
+     */
     public boolean equals(Matrix B) {
         Matrix A = this;
         if (B.M != A.M || B.N != A.N) 
@@ -159,6 +190,13 @@ final public class Matrix {
     }
 
     // retorna C = A * B
+    /**
+     * C=A*B
+     * matrix C equals matrix A multiplied matrix B
+     * @param B is a parameter that represents the other matrix
+     * @return the result of the operation
+     * @throw RuntimeException if the matrix is not of the right dimensions
+     */
     public Matrix multiply(Matrix B) {
         Matrix A = this;
         if (A.N != B.M) 
@@ -176,6 +214,26 @@ final public class Matrix {
     // i contenir els resultats de les equacions. La matriu
     // actual ha de contenir els coeficients i tenir el
     // rang adient per ser resoluble (a més de ser quadrada)
+    /**
+     * returns x = A^-1*b
+     * <p><b>returns x = A^-1*b</b> but the matrix entered as a parameter have to <b>contain only a row and 
+     * contain the results of the equations</b>. The actual matrix have to contain the coefficients and 
+     * the appropriate range for beeing solvable (and have to be a square).</p>
+     * The procedure is:
+     * <ol>
+     *  <il>Creates a copy of the data
+     *  <il>Deletes the Gaussian matrix with a parcian pivocity
+     *  <il>Then finds the row that has to pivotate and switch
+     *  <il>Check if is singular
+     *  <il>Pivoted in B
+     *  <il>Pivoted in A
+     *  <il>Switch to integer
+     * </ol> 
+     * @param rhs is the oher matrix used to operate
+     * @return the end of the operation
+     * @throw RuntimeException if the matrix is not of the right dimensions
+     * @throw RuntimeException if the matrix is singular
+     */
     public Matrix solve(Matrix rhs) {
         if (M != N || rhs.M != N || rhs.N != 1)
             throw new RuntimeException("Illegal matrix dimensions.");
@@ -218,6 +276,10 @@ final public class Matrix {
     }
 
     // retorna una representació en cadena de text
+    /**
+     * returns representation of the matrix in a string text
+     * @return res a string chain with the matrix 
+     */
     public String toString() {
     	String res = "";
         for (int i = 0; i < M; i++) {
