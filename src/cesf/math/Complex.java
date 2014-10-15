@@ -11,7 +11,16 @@ package cesf.math;
 // i accepten diverses operacions. Aquesta classe 
 // implementa les més destacables i necessàries.
 /**
- * 
+ * Class for complex numbers
+ * <p>the complex numbers have the form a+bi (example 3+4i),
+ * where <code>i</code> is the square of the -1 and the base of the imaginary numbers</p>
+ * <p>the parts of a complex number are <ul>
+ * <il> a= the real part
+ * <il> b= the imaginary part
+ * </ul></p>
+ * <p>with a camplex number you can calculate diferents operations.
+ * This class implements  the most necesaries.
+ * </p>
  * @author alexandre
  * @version 1.0
  */
