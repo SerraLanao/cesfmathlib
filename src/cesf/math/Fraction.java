@@ -2,7 +2,8 @@ package cesf.math;
 
 // classe immutable per a representar fraccions enteres
 /**
- * 
+ * Represents a fraction
+ * Represents and resolve fractions
  * @author alexandre
  * @version 1.0
  *
